@@ -5,7 +5,7 @@ import {
     bloquearEmpezar,
     desbloquearEmpezar,
     bloquearUsuario,
-    desbloquearUsuario
+    desbloquearUsuario,
 } from './ui.js';
 
 let secuenciaMaquina = [];
@@ -42,14 +42,14 @@ function jugarRonda() {
     }, 800);
 
     secuenciaMaquina.push(padNuevo);
-    secuenciaMaquina.forEach(function(pad, i) {
+    secuenciaMaquina.forEach(function (pad, i) {
         const RETRASO_MAQUINA = (i + 1) * 800;
         setTimeout(() => {
             prenderPad(pad);
         }, RETRASO_MAQUINA);
     });
 
-    setTimeout(function() {
+    setTimeout(function () {
         setTimeout(() => {
             actualizarVisor('Turno del Jugador');
         }, 800);
@@ -61,11 +61,11 @@ export function jugarUsuario(evento) {
     const padUsuario = evento.target;
     prenderPad(padUsuario);
     secuenciaUsuario.push(padUsuario);
-    const padMaquina = secuenciaMaquina[(secuenciaUsuario.length - 1)];
+    const padMaquina = secuenciaMaquina[secuenciaUsuario.length - 1];
 
     if (padUsuario.id !== padMaquina.id) {
         perder();
-        return
+        return;
     }
 
     if (secuenciaUsuario.length === secuenciaMaquina.length) {
@@ -82,7 +82,7 @@ function generarAleatorio() {
 
 function perder() {
     const $pads = document.querySelectorAll('.pad');
-    $pads.forEach(function(pad) {
+    $pads.forEach(function (pad) {
         prenderPad(pad);
     });
     bloquearUsuario();

@@ -32,14 +32,14 @@ export function desbloquearEmpezar() {
 }
 
 export function bloquearUsuario() {
-    document.querySelectorAll('.pad').forEach(function(pad) {
+    document.querySelectorAll('.pad').forEach(function (pad) {
         pad.style.cursor = 'default';
-        pad.onclick = function() {};
+        pad.onclick = function () {};
     });
 }
 
 export function desbloquearUsuario() {
-    document.querySelectorAll('.pad').forEach(function(pad) {
+    document.querySelectorAll('.pad').forEach(function (pad) {
         pad.style.cursor = 'pointer';
         pad.onclick = jugarUsuario;
     });
